@@ -30,7 +30,7 @@ NODE * mystack::find(int at){
 }
 
 NODE& mystack::get(int i){
-    this->dmsg("F:GET->" + std::to_string(i));
+    this->dmsg("F:GET->" + to_string(i));
     NODE *d = this->find(i);
     return *d;
 }
@@ -48,7 +48,7 @@ void mystack::show() {
     cout << "--------" << endl;
     for (int i=0; i<this->length; i++){
         NODE *current_ = this->find(i);
-        this->dmsg("F:SHOW:Objecto->" + std::to_string(i));
+        this->dmsg("F:SHOW:Objecto->" + to_string(i));
         cout << "Next->" << current_->next << endl;
         cout << current_->mynode.cod << endl;
         cout << current_->mynode.name << endl;
@@ -86,7 +86,7 @@ void mystack::push(TDATO &d) {
 }
 
 void mystack::insert(TDATO &d, int at){
-    this->dmsg("F:INSERT->" + std::to_string(at));
+    this->dmsg("F:INSERT->" + to_string(at));
     if((0<=at)&&(at<=this->length)){
         NODE *m = new NODE();
         m->mynode.cod = d.cod;
@@ -113,7 +113,7 @@ void mystack::insert(TDATO &d, int at){
 }
 
 void mystack::removeat(int at){
-    this->dmsg("F:REMOVEAT->" + std::to_string(at));
+    this->dmsg("F:REMOVEAT->" + to_string(at));
     if((0<=at)&&(at<=this->length)){
         NODE *c = this->find(at);
         if(0<at){
@@ -140,7 +140,7 @@ void mystack::debug(bool is_active){
     this->debug_flag = is_active;
 }
 
-void mystack::dmsg(std::string message){
+void mystack::dmsg(string message){
     if (this->debug_flag==true){
         cout << message << endl;
     }
