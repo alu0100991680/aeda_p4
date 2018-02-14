@@ -28,6 +28,10 @@ int main(int argc, char** argv) {
     mystack *v = new mystack();
     v->debug(false);
     
+    cout << " ================= " << endl;
+    cout << "|     MYSTACK     |" << endl;
+    cout << " ================= " << endl << endl;
+    
     //Introducimos 3 usuario
     cout << "Introducimos Rámon, Yezer, Rayco. Mostramos resultado push" << endl;
     v->push(a);
