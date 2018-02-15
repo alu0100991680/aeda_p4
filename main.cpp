@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
     
     //Extraemos el primero que por ser LIFO será Rayco
     cout << "Extraemos Rayco. Mostramos resultado pop y el último estado de la pila" << endl;
-    NODE u = v->pop();
+    STACKNODE u = v->pop();
     cout << u.mynode.cod << endl;
     cout << u.mynode.name << endl;
     cout << u.mynode.surname << endl;

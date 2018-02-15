@@ -21,17 +21,17 @@ mystack::~mystack() {
 //Métodos práctica
 //================
 
-NODE * mystack::find(int at){
-    NODE *n = this->head_reference;
+STACKNODE * mystack::find(int at){
+    STACKNODE *n = this->head_reference;
     for(int i=0;i<at;i++){
         n = n->next;
     }
     return n;
 }
 
-NODE& mystack::get(int i){
+STACKNODE& mystack::get(int i){
     this->dmsg("F:GET->" + to_string(i));
-    NODE *d = this->find(i);
+    STACKNODE *d = this->find(i);
     return *d;
 }
 
@@ -47,7 +47,7 @@ void mystack::show() {
     
     cout << "--------" << endl;
     for (int i=0; i<this->length; i++){
-        NODE *current_ = this->find(i);
+        STACKNODE *current_ = this->find(i);
         this->dmsg("F:SHOW:Objecto->" + to_string(i));
         cout << "Next->" << current_->next << endl;
         cout << current_->mynode.cod << endl;
@@ -70,12 +70,12 @@ void mystack::push(TDATO &d) {
     this->insert(d, 0);
 }
 
- NODE& mystack::pop() {
+ STACKNODE& mystack::pop() {
     this->dmsg("F:REMOVE");
-    NODE *c_aux = nullptr;
+    STACKNODE *c_aux = nullptr;
     if(0<this->length){
-        NODE *aux = this->find(0);
-        c_aux = new NODE(); // Hacemos una copia antes de borrarlo
+        STACKNODE *aux = this->find(0);
+        c_aux = new STACKNODE(); // Hacemos una copia antes de borrarlo
         c_aux->mynode.cod = aux->mynode.cod;
         c_aux->mynode.name = aux->mynode.name;
         c_aux->mynode.surname = aux->mynode.surname;
@@ -88,19 +88,19 @@ void mystack::push(TDATO &d) {
 void mystack::insert(TDATO &d, int at){
     this->dmsg("F:INSERT->" + to_string(at));
     if((0<=at)&&(at<=this->length)){
-        NODE *m = new NODE();
+        STACKNODE *m = new STACKNODE();
         m->mynode.cod = d.cod;
         m->mynode.name = d.name;
         m->mynode.surname = d.surname; 
 
         if (at<this->length){
-            NODE *n = this->find(at);
+            STACKNODE *n = this->find(at);
             m->next = n; 
 
         }
         
         if (0<at){
-            NODE *p = this->find(at-1);
+            STACKNODE *p = this->find(at-1);
             p->next = m;
         }
         
@@ -115,10 +115,10 @@ void mystack::insert(TDATO &d, int at){
 void mystack::removeat(int at){
     this->dmsg("F:REMOVEAT->" + to_string(at));
     if((0<=at)&&(at<=this->length)){
-        NODE *c = this->find(at);
+        STACKNODE *c = this->find(at);
         if(0<at){
-            NODE *p = this->find(at-1);
-            NODE *n = nullptr;
+            STACKNODE *p = this->find(at-1);
+            STACKNODE *n = nullptr;
             if (at+1<this->length){        
                 n= this->find(at+1);
             }
